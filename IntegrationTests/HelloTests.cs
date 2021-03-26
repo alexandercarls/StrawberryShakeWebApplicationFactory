@@ -38,10 +38,9 @@ namespace IntegrationTests
         [Fact]
         public async Task StrawberryShake()
         {
-            var client = Api.CreateClient();
-            var conferenceClient = Api.Services.GetRequiredService<ConferenceClient.ConferenceClient>();
+            var client = Api.GetGraphQLClient();
 
-            var response = await conferenceClient.Hello.ExecuteAsync();
+            var response = await client.Hello.ExecuteAsync();
 
             Assert.Equal("world",response.Data?.Hello);
         }
